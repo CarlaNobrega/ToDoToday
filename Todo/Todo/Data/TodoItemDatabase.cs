@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 
@@ -14,22 +15,12 @@ namespace Todo
 			database.CreateTableAsync<TodoItem>().Wait();
 		}
 
-		public Task<List<TodoItem>> GetItemsAsync()
+		public Task<List<TodoItem>> GetItemAsync()
 		{
-			return database.Table<TodoItem>().ToListAsync();
+			return database.Table<TodoItem>().Where(i=> i.DataInclusao == DateTime.Now.Date).ToListAsync();
 		}
 
-		public Task<List<TodoItem>> GetItemsNotDoneAsync()
-		{
-			return database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-		}
-
-		public Task<TodoItem> GetItemAsync(int id)
-		{
-			return database.Table<TodoItem>().Where(i => i.ID == id).FirstOrDefaultAsync();
-		}
-
-		public Task<int> SaveItemAsync(TodoItem item)
+		public Task<int> SalvarItemAsync(TodoItem item)
 		{
 			if (item.ID != 0)
 			{
@@ -40,7 +31,7 @@ namespace Todo
 			}
 		}
 
-		public Task<int> DeleteItemAsync(TodoItem item)
+		public Task<int> DeletarItemAsync(TodoItem item)
 		{
 			return database.DeleteAsync(item);
 		}

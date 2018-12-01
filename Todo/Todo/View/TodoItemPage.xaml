@@ -5,7 +5,9 @@
         <Entry Text="{Binding Tarefa}" />
 		<Label Text="Descrição" />
         <Entry Text="{Binding Descricao}" />
-		<Label Text="Finalizada" />
+        <TimePicker Time="{Binding Hora}"
+                            Format="hh:mm tt" />
+        <Label Text="Finalizada" />
         <Switch IsToggled="{Binding Finalizada}" />
 		<Button Text="Salvar" Clicked="OnSalvarClicked" />
 		<Button Text="Deletar" Clicked="OnDeletarClicked" />

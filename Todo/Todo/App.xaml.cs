@@ -13,11 +13,11 @@ namespace Todo
         public App()
         {
             Resources = new ResourceDictionary();
-            Resources.Add("primaryPink", Color.FromHex("ffdbed"));
-            Resources.Add("primaryDarkPink", Color.FromHex("ff94c9"));
+            Resources.Add("TodoItemBlue", Color.FromHex("9ac9df"));
+            Resources.Add("TodoDarkBlue", Color.FromHex("5ca8cc"));
 
             var nav = new NavigationPage(new TodoListPage());
-            nav.BarBackgroundColor = (Color)App.Current.Resources["primaryDarkPink"];
+            nav.BarBackgroundColor = (Color)App.Current.Resources["TodoDarkBlue"];
             nav.BarTextColor = Color.White;
 
             MainPage = nav;

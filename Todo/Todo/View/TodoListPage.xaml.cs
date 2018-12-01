@@ -16,7 +16,7 @@ namespace Todo
 			base.OnAppearing();
 			
 			((App)App.Current).ResumeAtTodoId = -1;
-			listView.ItemsSource = await App.Database.GetItemsAsync();
+			listView.ItemsSource = await App.Database.GetItemAsync();
 		}
 
 		async void OnItemAdicionado(object sender, EventArgs e)

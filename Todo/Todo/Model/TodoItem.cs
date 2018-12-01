@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using System;
 
 namespace Todo
 {
@@ -9,6 +10,8 @@ namespace Todo
 		public string Tarefa { get; set; }
 		public string Descricao { get; set; }
 		public bool Finalizada { get; set; }
-	}
+        public TimeSpan Hora { get; set; }
+        public DateTime DataInclusao { get; set; }
+    }
 }
 
